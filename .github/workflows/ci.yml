@@ -1,2 +1,21 @@
 ---
 name: CI
+
+on:
+  push:
+    
+env:
+  FOO: bar
+
+jobs:
+  example-variable-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo “$FOO” # bar
+
+  example-variable-2:
+    runs-on: ubuntu-latest
+    env:
+      FOO: override_at_job_level
+    steps:
+      - run: echo “$FOO” # override_at_job_level
